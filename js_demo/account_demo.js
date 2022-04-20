@@ -54,6 +54,9 @@ let emptyPhone = document.getElementById('empty_phone');
 let phoneNum = document.getElementById('phone_num');
 let phoneLength = document.getElementById('phone_length');
 
+// email regex
+let validEmail = /^[^ ]+@[^ ]+\.[a-z]{2,3}$/;
+
 // show errors on change
 
 // first name
@@ -61,14 +64,15 @@ firstName.addEventListener('change', (e) => {
     if (firstName.value === '' || firstName.value == null) {
         emptyFirst.style.display = 'block';
         // firstName.classList.add('box-error');
+        nonAlphanumericFirst.style.display = 'none';
     } else {
         emptyFirst.style.display = 'none';
-    }
-    if (!firstName.value.match(/^[a-zA-Z]*$/)) {
-        nonAlphanumericFirst.style.display = 'block';
-        // firstName.classList.add('box-error');
-    } else {
-        nonAlphanumericFirst.style.display = 'none';
+        if (!firstName.value.match(/^[a-zA-Z]*$/)) {
+            nonAlphanumericFirst.style.display = 'block';
+            // firstName.classList.add('box-error');
+        } else {
+            nonAlphanumericFirst.style.display = 'none';
+        }
     }
 });
 
@@ -77,30 +81,31 @@ lastName.addEventListener('change', (e) => {
     if (lastName.value === '' || lastName.value == null) {
         emptyLast.style.display = 'block';
         // lastName.classList.add('box-error');
+        nonAlphanumericLast.style.display = 'none';
     } else {
         emptyLast.style.display = 'none';
-    }
-    if (!lastName.value.match(/^[a-zA-Z]*$/)) {
-        nonAlphanumericLast.style.display = 'block';
-        // lastName.classList.add('box-error');
-    } else {
-        nonAlphanumericLast.style.display = 'none';
+        if (!lastName.value.match(/^[a-zA-Z]*$/)) {
+            nonAlphanumericLast.style.display = 'block';
+            // lastName.classList.add('box-error');
+        } else {
+            nonAlphanumericLast.style.display = 'none';
+        }
     }
 });
 
 email.addEventListener('change', (e) => {
-    let validEmail = /^[^ ]+@[^ ]+\.[a-z]{2,3}$/;
     if (email.value === '' || email.value == null) {
         emptyEmail.style.display = 'block';
         // email.classList.add('box-error');
+        invalidEmail.style.display = 'none';
     } else {
         emptyEmail.style.display = 'none';
-    }
-    if (!email.value.match(validEmail) && email.value !== '' && email.value != null) {
-        invalidEmail.style.display = 'block';
-        // email.classList.add('box-error');
-    } else {
-        invalidEmail.style.display = 'none';
+        if (!email.value.match(validEmail)) {
+            invalidEmail.style.display = 'block';
+            // email.classList.add('box-error');
+        } else {
+            invalidEmail.style.display = 'none';
+        }
     }
 })
 
@@ -109,32 +114,36 @@ password.addEventListener('change', (e) => {
     if (password.value === '' || password.value == null) {
         emptyPassword.style.display = 'block';
         // password.classList.add('box-error');
+        passwordLength.style.display = 'none';
+        passwordNum.style.display = 'none';
+        passwordUpper.style.display = 'none';
+        passwordLower.style.display = 'none';
     } else {
         emptyPassword.style.display = 'none';
-    }
-    if (password.value.length < 8) {
-        passwordLength.style.display = 'block';
-        // password.classList.add('box-error');
-    } else {
-        passwordLength.style.display = 'none';
-    }
-    if (!password.value.match(/[0-9]/)) {
-        passwordNum.style.display = 'block';
-        // password.classList.add('box-error');
-    } else {
-        passwordNum.style.display = 'none';
-    }
-    if (!password.value.match(/[A-Z]/)) {
-        passwordUpper.style.display = 'block';
-        // password.classList.add('box-error');
-    } else {
-        passwordUpper.style.display = 'none';
-    }
-    if (!password.value.match(/[a-z]/)) {
-        passwordLower.style.display = 'block';
-        // password.classList.add('box-error');
-    } else {
-        passwordLower.style.display = 'none';
+        if (password.value.length < 8) {
+            passwordLength.style.display = 'block';
+            // password.classList.add('box-error');
+        } else {
+            passwordLength.style.display = 'none';
+        }
+        if (!password.value.match(/[0-9]/)) {
+            passwordNum.style.display = 'block';
+            // password.classList.add('box-error');
+        } else {
+            passwordNum.style.display = 'none';
+        }
+        if (!password.value.match(/[A-Z]/)) {
+            passwordUpper.style.display = 'block';
+            // password.classList.add('box-error');
+        } else {
+            passwordUpper.style.display = 'none';
+        }
+        if (!password.value.match(/[a-z]/)) {
+            passwordLower.style.display = 'block';
+            // password.classList.add('box-error');
+        } else {
+            passwordLower.style.display = 'none';
+        }
     }
 });
 
@@ -143,14 +152,15 @@ passwordConfirm.addEventListener('change', (e) => {
     if (passwordConfirm.value === '' || passwordConfirm.value == null) {
         emptyPasswordConfirm.style.display = 'block';
         // passwordConfirm.classList.add('box-error');
+        confirmationPasswordMatch.style.display = 'none';
     } else {
         emptyPasswordConfirm.style.display = 'none';
-    }
-    if (passwordConfirm.value !== password.value) {
-        confirmationPasswordMatch.style.display = 'block';
-        // passwordConfirm.classList.add('box-error');
-    } else {
-        confirmationPasswordMatch.style.display = 'none';
+        if (passwordConfirm.value !== password.value) {
+            confirmationPasswordMatch.style.display = 'block';
+            // passwordConfirm.classList.add('box-error');
+        } else {
+            confirmationPasswordMatch.style.display = 'none';
+        }
     }
 });
 
@@ -159,29 +169,163 @@ phone.addEventListener('change', (e) => {
     if (phone.value === '' || phone.value == null) {
         emptyPhone.style.display = 'block';
         // phone.classList.add('box-error');
+        phoneLength.style.display = 'none';
+        phoneNum.style.display = 'none';
     } else {
         emptyPhone.style.display = 'none';
-    }
-    if (phone.value.length > 12 || phone.value.length < 10) {
-        phoneLength.style.display = 'block';
-        // phone.classList.add('box-error');
-    } else {
-        phoneLength.style.display = 'none';
-    }
-    if (phone.value.match(/[a-zA-Z]/)) {
-        phoneNum.style.display = 'block';
-        // phone.classList.add('box-error');
-    } else {
-        phoneNum.style.display = 'none';
+        if (phone.value.length > 12 || phone.value.length < 10) {
+            phoneLength.style.display = 'block';
+            // phone.classList.add('box-error');
+        } else {
+            phoneLength.style.display = 'none';
+        }
+        if (phone.value.match(/[a-zA-Z]/)) {
+            phoneNum.style.display = 'block';
+            // phone.classList.add('box-error');
+        } else {
+            phoneNum.style.display = 'none';
+        }
     }
 });
 
 form.addEventListener('submit', (e) => {
-    if (firstName.value === '' || firstName.value == null) {
+
+    // first name
+
+    if (formFirstName.value === '' || formFirstName.value == null) {
         emptyFirst.style.display = 'block';
-        // e.preventDefault();
-    } else if (!firstName.value.match(/^[a-zA-Z]+$/)) {
-        nonAlphanumericFirst.style.display = 'block';
-        // e.preventDefault();
+        nonAlphanumericFirst.style.display = 'none';
+        e.preventDefault();
+    } else {
+        emptyFirst.style.display = 'none';
+        if (!formFirstName.value.match(/^[a-zA-Z]*$/)) {
+            nonAlphanumericFirst.style.display = 'block';
+            e.preventDefault();
+        } else {
+            nonAlphanumericFirst.style.display = 'none';
+            e.preventDefault();
+        }
+    }
+
+    // last name
+
+    if (formLastName.value === '' || formLastName.value == null) {
+        emptyLast.style.display = 'block';
+        nonAlphanumericLast.style.display = 'none';
+        e.preventDefault();
+    } else {
+        emptyLast.style.display = 'none';
+        e.preventDefault();
+        if (!formLastName.value.match(/^[a-zA-Z]*$/)) {
+            nonAlphanumericLast.style.display = 'block';
+            e.preventDefault();
+        } else {
+            nonAlphanumericLast.style.display = 'none';
+            e.preventDefault();
+        }
+    }
+
+    // email
+
+    if (formEmail.value === '' || formEmail.value == null) {
+        emptyEmail.style.display = 'block';
+        invalidEmail.style.display = 'none';
+        e.preventDefault();
+    } else {
+        emptyEmail.style.display = 'none';
+        e.preventDefault();
+        if (!formEmail.value.match(validEmail)) {
+            invalidEmail.style.display = 'block';
+            e.preventDefault();
+        } else {
+            invalidEmail.style.display = 'none';
+            e.preventDefault();
+        }
+    }
+
+    // password
+
+    if (formPassword.value === '' || formPassword.value == null) {
+        emptyPassword.style.display = 'block';
+        passwordLength.style.display = 'none';
+        passwordNum.style.display = 'none';
+        passwordUpper.style.display = 'none';
+        passwordLower.style.display = 'none';
+        e.preventDefault();
+    } else {
+        emptyPassword.style.display = 'none';
+        e.preventDefault();
+        if (formPassword.value.length < 8) {
+            passwordLength.style.display = 'block';
+            e.preventDefault();
+        } else {
+            passwordLength.style.display = 'none';
+            e.preventDefault();
+        }
+        if (!formPassword.value.match(/[0-9]/)) {
+            passwordNum.style.display = 'block';
+            e.preventDefault();
+        } else {
+            passwordNum.style.display = 'none';
+            e.preventDefault();
+        }
+        if (!formPassword.value.match(/[A-Z]/)) {
+            passwordUpper.style.display = 'block';
+            e.preventDefault();
+        } else {
+            passwordUpper.style.display = 'none';
+            e.preventDefault();
+        }
+        if (!formPassword.value.match(/[a-z]/)) {
+            passwordLower.style.display = 'block';
+            e.preventDefault();
+        } else {
+            passwordLower.style.display = 'none';
+            e.preventDefault();
+        }
+    }
+
+    // password confirmation
+
+    if (formPasswordConfirm.value === '' || passwordConfirm.value == null) {
+        emptyPasswordConfirm.style.display = 'block';
+        confirmationPasswordMatch.style.display = 'none';
+        e.preventDefault();
+    } else {
+        emptyPasswordConfirm.style.display = 'none';
+        e.preventDefault();
+        if (formPasswordConfirm.value !== password.value) {
+            confirmationPasswordMatch.style.display = 'block';
+            e.preventDefault();
+        } else {
+            confirmationPasswordMatch.style.display = 'none';
+            e.preventDefault();
+        }
+    }
+
+    // phone
+
+    if (formPhone.value === '' || formPhone.value == null) {
+        emptyPhone.style.display = 'block';
+        phoneLength.style.display = 'none';
+        phoneNum.style.display = 'none';
+        e.preventDefault();
+    } else {
+        emptyPhone.style.display = 'none';
+        e.preventDefault();
+        if (formPhone.value.length > 12 || formPhone.value.length < 10) {
+            phoneLength.style.display = 'block';
+            e.preventDefault();
+        } else {
+            phoneLength.style.display = 'none';
+            e.preventDefault();
+        }
+        if (formPhone.value.match(/[a-zA-Z]/)) {
+            phoneNum.style.display = 'block';
+            e.preventDefault();
+        } else {
+            phoneNum.style.display = 'none';
+            e.preventDefault();
+        }
     }
 });
