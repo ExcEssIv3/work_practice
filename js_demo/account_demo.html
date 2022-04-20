@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Create Account</title>
+        <link rel="stylesheet" href="account_demo.css">
+        <script defer src="account_demo.js"></script>
+    </head>
+
+    <body>
+        <div>
+            <h1>Create Account</h1>
+            <form name="form" method="post">
+                <div class="text_input">
+                    <input type="text" name="firstName" placeholder="First Name">
+                    <p id="empty_first">First Name is Required</p>
+                    <p id="non_alphanumeric_first">First Name May Only Contain Letters</p>
+                </div>
+                
+                <div class="text_input">
+                    <input type="text" name="lastName" placeholder="Last Name">
+                    <p id="empty_last">Last Name is Required</p>
+                    <p id="non_alphanumeric_last">Last Name May Only Contain Letters</p>
+                </div>
+                
+                <div class="text_input">
+                    <input type="text" name="email" placeholder="Email">
+                    <p id="empty_email">Email is Required</p>
+                    <p id="invalid_email">Email Format is Invalid</p>
+                </div>
+                
+                <div class="text_input">
+                    <input type="text" name="password" placeholder="Password">
+                    <p id="empty_password">Password is Required</p>
+                    <p id="password_length">Password Must Contain at Least 8 Characters</p>
+                    <p id="password_num">Password Must Contain a Number</p>
+                    <p id="password_upper">Password Must Contain an Uppercase Character</p>
+                    <p id="password_lower">Password Must Contain a Lowercase Character</p>
+                </div>
+                
+                <div class="text_input">
+                    <input type="text" name="passwordConfirm" placeholder="Confirm Password">
+                    <p id="empty_password_confirm">Password Confirmation is Required</p>
+                    <p id="confirmation_password_match">Confirmation Password Must Match Password</p>
+                </div>
+
+                
+                <div class="text_input">
+                    <input type="text" name="phone" placeholder="Phone Number">
+                    <p id="empty_phone">Phone Number Required</p>
+                    <p id="phone_num">Phone Number Must Only Contain Numbers</p>
+                    <p id="phone_length">Phone Number Must be Between 10 and 12 Characters</p>
+                </div>
+
+                
+                <div class="text_input">
+                    <input type="date" name="firstName" placeholder="First Name">
+                    <p id="empty_date">Date is Required</p>
+                    <p id="future_date">Birth Date Cannot be in the Future</p>
+                </div>
+            </form>
+        </div>
+    </body>
+</html>
