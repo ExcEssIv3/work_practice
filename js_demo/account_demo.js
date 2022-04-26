@@ -287,7 +287,7 @@ form.addEventListener('submit', (e) => {
 
     // password confirmation
 
-    if (formPasswordConfirm.value === '' || passwordConfirm.value == null) {
+    if (formPasswordConfirm.value === '' || formPasswordConfirm.value == null) {
         emptyPasswordConfirm.style.display = 'block';
         confirmationPasswordMatch.style.display = 'none';
         e.preventDefault();
